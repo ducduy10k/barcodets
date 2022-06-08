@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import barcode from 'jsbarcode';
+import { useLayoutEffect } from 'react';
 
 function App() {
+  useLayoutEffect(() => {
+    barcode('#barcode', '123', {
+      lineColor: '#000',
+      width: 4,
+      height: 40,
+      displayValue: true,
+      format: 'CODE128',
+    });
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <svg id='barcode'></svg>
     </div>
   );
 }
